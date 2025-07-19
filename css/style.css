@@ -56,8 +56,10 @@
      float:left;
 }
  .container {
-     width:1500px;
-     margin:0 auto;
+    max-width: 1500px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
 }
  .plr {
      padding-left:100px;
@@ -70,7 +72,7 @@
 
 
 /********** Top Header Starts **********/  
-.top-header {
+.top-header .width-100 {
      background:#2196f3;
      padding:5px 0px;
      border-bottom: 1px solid #3131315e;
