@@ -1,1 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Leaving Certificate - Sudhakarrao Naik School</title>
+    <style>
+        /* This hides your website's scrollbars and makes the Google Script full-screen */
+        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-color: #f4f7f6; }
+        iframe { width: 100%; height: 100%; border: none; }
+    </style>
+</head>
+<body>
 
+    <!-- The iframe where the Google Script will load -->
+    <iframe id="certFrame" src=""></iframe>
+
+    <script>
+        /* --- 1. PASTE YOUR GOOGLE APPS SCRIPT URL HERE --- */
+        const googleScriptUrl = "https://script.google.com/a/~/macros/s/AKfycbzTCID5iHo5YS5CjEy4UTwVdY5vC4b3_hJhlpPThh464CacPbZ90vVOpTng8LnBP5sv/exec";
+
+        /* --- 2. Logic to grab the PEN number and load the script --- */
+        const urlParams = new URLSearchParams(window.location.search);
+        const penNumber = urlParams.get('pen');
+        const iframe = document.getElementById('certFrame');
+
+        // If someone scans a QR code with a PEN number, load that specific certificate
+        if (penNumber) {
+            iframe.src = googleScriptUrl + "?pen=" + encodeURIComponent(penNumber);
+        } 
+        // If they just visit www.naikcollege.com/certificate.html, just load the search box
+        else {
+            iframe.src = googleScriptUrl;
+        }
+    </script>
+
+</body>
+</html>
