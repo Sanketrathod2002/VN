@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Directory | Jai Janta Education Society, Kinhiraja</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Premium Directory Styles -->
+    <style>
+        .page-header {
+            background: linear-gradient(rgba(11, 74, 142, 0.9), rgba(11, 74, 142, 0.9)), url('images/gallery-6.jpg') center/cover;
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .page-header h1 {
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .breadcrumb {
+            font-size: 14px;
+            font-weight: 400;
+            color: #e2e8f0;
+        }
+        .breadcrumb a {
+            color: #f7941d;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Department Section Styling */
+        .dept-section {
+            margin-bottom: 70px;
+            background: #f9fbfd;
+            padding: 50px 40px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            border: 1px solid #edf2f7;
+        }
+        .dept-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 15px;
+        }
+        .dept-icon {
+            font-size: 28px;
+            color: #f7941d;
+            margin-right: 15px;
+        }
+        .dept-title {
+            font-size: 26px;
+            color: #0b4a8e;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        /* Faculty Grid Layout */
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        /* Modern Professional Profile Card */
+        .profile-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #edf2f7;
+        }
+        .profile-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+        
+        /* Card Banner */
+        .profile-banner {
+            height: 110px;
+            background: linear-gradient(135deg, #0b4a8e, #1a73e8);
+            position: relative;
+        }
+        .profile-banner::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30%;
+            background: linear-gradient(to top, rgba(0,0,0,0.1), transparent);
+        }
+
+        /* Circular Avatar */
+        .profile-img-wrap {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: #fff;
+            padding: 6px;
+            margin: -65px auto 0;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .profile-img-wrap img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #f4f7fb;
+        }
+
+        /* Card Body */
+        .profile-body {
+            padding: 25px 20px 30px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .profile-name {
+            color: #1a202c;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .profile-designation {
+            color: #f7941d;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        
+        /* Qualifications Box */
+        .profile-qual {
+            background: #f4f7fb;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: auto;
+            border: 1px solid #e2e8f0;
+        }
+        .profile-qual i {
+            color: #0b4a8e;
+            margin-right: 8px;
+            font-size: 14px;
+        }
+        .profile-qual span {
+            font-size: 14px;
+            color: #4a5568;
+            font-weight: 500;
+        }
+
+        /* Loading Spinner */
+        .loader-container {
+            text-align: center;
+            padding: 80px 0;
+        }
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #0b4a8e;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .dept-section {
+                padding: 30px 20px;
+                margin-bottom: 40px;
+            }
+            .dept-title {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="contact-info">
+                <span><i class="fa fa-phone"></i> +91 8149797952</span>
+                <span><i class="fa fa-envelope"></i> admin@naikcollege.com</span>
+            </div>
+            <div class="top-links">
+                <a href="admin-login.html" class="admin-link"><i class="fa fa-lock"></i> Admin Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Society Banner -->
+    <div class="society-banner">
+        <div class="container">
+            <img src="images/banner.jpg" alt="Jai Janta Education Society Banner" class="banner-img">
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="mobile-menu-toggle" id="mobile-menu">
+                <i class="fa fa-bars"></i> Menu
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="academics.html">Academics</a></li>
+                <li><a href="admissions.html">Admissions</a></li>
+                <li><a href="facilities.html">Facilities</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="student-portal.html" class="highlight-link">Student Portal</a></li>
+                <li><a href="faculty.html" class="active">Faculty</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Academic Leadership & Educators</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / Faculty Directory
+            </div>
+        </div>
+    </header>
+
+    <!-- Dynamic Faculty Roster Section -->
+    <section style="padding-top: 0;">
+        <div class="container" id="directory-container">
+            
+            <!-- Loader shows before data is fetched -->
+            <div class="loader-container" id="faculty-loader">
+                <div class="spinner"></div>
+                <h3 style="color: #0b4a8e;">Loading Faculty Directory...</h3>
+                <p style="color: #666;">Securely fetching records from the database.</p>
+            </div>
+
+            <!-- JavaScript will inject the Department Sections and Grid here -->
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container grid-container grid-4">
+            
+            <div class="footer-col">
+                <h3>About Society</h3>
+                <p>Jai Janta Education Society, Fulumari Ta. Manora Dist. Washim is dedicated to providing quality education, skill development, and strong moral values to rural students in Kinhiraja, Washim.</p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="facilities.html">Hostel & Facilities</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Portals</h3>
+                <ul>
+                    <li><a href="student-portal.html">Student Portal (Leave & Docs)</a></li>
+                    <li><a href="faculty.html">Faculty Directory</a></li>
+                    <li><a href="verify-id.html">Verify Digital ID</a></li>
+                    <li><a href="admin-login.html">Admin Login</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Get In Touch</h3>
+                <ul class="contact-details">
+                    <li><i class="fa fa-map-marker-alt"></i> Kinhiraja, Ta. Malegaon, Dist. Washim</li>
+                    <li><i class="fa fa-phone"></i> +91 8149797952</li>
+                    <li><i class="fa fa-envelope"></i> admin@naikcollege.com</li>
+                </ul>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <p>&copy; 2026 Jai Janta Education Society, Kinhiraja. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main Navigation Script -->
+    <script src="js/app.js"></script>
+
+    <!-- Page Specific Script for Fetching & Grouping Faculty Data -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetchFacultyData();
+        });
+
+        // Your existing App Script URL
+        const FACULTY_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxAWAiWelXD-tge4q1bgugIbPSBKXu595Y9a4IX1dEqrm2VueWQBA4M5COa8gdc9e8A/exec";
+
+        /**
+         * Safely converts Google Drive links into displayable thumbnail images
+         */
+        function getDirectImageUrl(url) {
+            if (!url || url.trim() === '') {
+                return 'https://via.placeholder.com/300x300?text=Photo+Unavailable';
+            }
+            let id = null;
+            const match = url.match(/\/d\/(.+?)\//); 
+            if (match && match[1]) {
+                id = match[1];
+            }
+            if (id) {
+                return `https://drive.google.com/thumbnail?id=${id}&sz=w800`;
+            }
+            return url;
+        }
+
+        async function fetchFacultyData() {
+            const container = document.getElementById('directory-container');
+            const loader = document.getElementById('faculty-loader');
+
+            try {
+                const response = await fetch(FACULTY_SCRIPT_URL);
+                if (!response.ok) throw new Error('Network response was not ok');
+                const data = await response.json();
+
+                if (data.faculty && data.faculty.length > 0) {
+                    loader.style.display = 'none'; // Hide loader
+                    
+                    // 1. Group Faculty by Department
+                    const groupedFaculty = data.faculty.reduce((acc, person) => {
+                        const dept = person.department ? person.department.trim() : "Other Departments";
+                        if (!acc[dept]) {
+                            acc[dept] = [];
+                        }
+                        acc[dept].push(person);
+                        return acc;
+                    }, {});
+
+                    // 2. Render HTML for Each Department
+                    for (const [departmentName, facultyList] of Object.entries(groupedFaculty)) {
+                        
+                        // Create the Department Section wrapper
+                        const deptSection = document.createElement('div');
+                        deptSection.className = 'dept-section';
+                        
+                        // Create Department Header
+                        const deptHeader = document.createElement('div');
+                        deptHeader.className = 'dept-header';
+                        deptHeader.innerHTML = `
+                            <i class="fa fa-university dept-icon"></i>
+                            <h2 class="dept-title">${departmentName}</h2>
+                        `;
+                        deptSection.appendChild(deptHeader);
+
+                        // Create the Grid for this department's faculty
+                        const grid = document.createElement('div');
+                        grid.className = 'faculty-grid';
+
+                        // Add faculty cards to the grid
+                        facultyList.forEach(person => {
+                            const directImageUrl = getDirectImageUrl(person.image);
+                            const card = document.createElement('div');
+                            card.className = 'profile-card';
+                            
+                            card.innerHTML = `
+                                <div class="profile-banner"></div>
+                                <div class="profile-img-wrap">
+                                    <img src="${directImageUrl}" alt="${person.name}" onerror="this.src='https://via.placeholder.com/300x300?text=No+Photo'">
+                                </div>
+                                <div class="profile-body">
+                                    <h3 class="profile-name">${person.name}</h3>
+                                    <div class="profile-designation">${person.designation}</div>
+                                    <div class="profile-qual">
+                                        <i class="fa fa-graduation-cap"></i> 
+                                        <span>${person.qualification || 'N/A'}</span>
+                                    </div>
+                                </div>
+                            `;
+                            grid.appendChild(card);
+                        });
+
+                        // Append grid to section, and section to main container
+                        deptSection.appendChild(grid);
+                        container.appendChild(deptSection);
+                    }
+                } else {
+                    loader.innerHTML = "<p style='color: #666; font-size: 18px;'>No faculty records found in the database.</p>";
+                }
+            } catch (error) {
+                console.error("Error fetching faculty data:", error);
+                if (loader) {
+                    loader.innerHTML = `
+                        <i class="fa fa-exclamation-triangle" style="font-size: 40px; color: #e53e3e; margin-bottom: 15px;"></i>
+                        <h3 style="color: #e53e3e;">Connection Error</h3>
+                        <p style="color: #666;">Unable to load the faculty directory. Please check your internet connection or verify the Google Sheet permissions.</p>
+                    `;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
