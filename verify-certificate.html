@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Official Certificate Verification | Jai Janta Education Society</title>
+    
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background-color: #f1f5f9; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        
+        /* Navbar Header */
+        .verify-header { background: #0b4a8e; color: #fff; width: 100%; padding: 20px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 40px; }
+        .verify-header h1 { font-size: 22px; font-weight: 700; margin: 0; }
+        .verify-header p { font-size: 14px; opacity: 0.8; margin-top: 5px; }
+
+        /* Main Container */
+        .verify-container { width: 100%; max-width: 600px; padding: 0 20px; }
+
+        /* Manual Search Bar */
+        .search-card { background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 30px; text-align: center; border: 1px solid #e2e8f0; }
+        .search-card h3 { color: #1e293b; margin-bottom: 15px; font-size: 18px; }
+        .search-input-group { display: flex; gap: 10px; }
+        .search-input-group input { flex: 1; padding: 15px; border: 2px solid #cbd5e1; border-radius: 8px; font-family: inherit; font-size: 16px; outline: none; transition: 0.3s; }
+        .search-input-group input:focus { border-color: #0b4a8e; }
+        .search-input-group button { padding: 15px 25px; background: #0b4a8e; color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 16px; transition: 0.3s; }
+        .search-input-group button:hover { background: #f7941d; }
+
+        /* Loading State */
+        #loading-state { text-align: center; padding: 40px; display: none; }
+        #loading-state i { font-size: 50px; color: #0b4a8e; margin-bottom: 15px; }
+        #loading-state h3 { color: #475569; }
+
+        /* Result Cards */
+        #result-state { display: none; }
+        .result-card { background: #ffffff; padding: 40px 30px; border-radius: 16px; box-shadow: 0 15px 50px rgba(0,0,0,0.1); position: relative; overflow: hidden; border: 1px solid #e2e8f0; }
+        
+        .result-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; }
+        .success-card::before { background: #10b981; }
+        .error-card::before { background: #ef4444; }
+
+        .header-icon { font-size: 60px; margin-bottom: 10px; text-align: center; }
+        .success-icon { color: #10b981; }
+        .error-icon { color: #ef4444; }
+
+        .result-card h2 { text-align: center; margin: 0 0 5px 0; font-size: 26px; color: #1e293b; }
+        .status-text { text-align: center; font-size: 14px; font-weight: 700; margin-bottom: 30px; letter-spacing: 1px; }
+        .status-success { color: #10b981; }
+        .status-error { color: #ef4444; }
+
+        .detail-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #f1f5f9; font-size: 15px; }
+        .detail-row:last-child { border-bottom: none; }
+        .label { color: #64748b; font-weight: 500; width: 40%; }
+        .value { color: #0f172a; font-weight: 700; width: 60%; text-align: right; }
+
+        .footer-note { text-align: center; margin-top: 30px; font-size: 12px; color: #94a3b8; padding-top: 20px; border-top: 1px dashed #e2e8f0; }
+
+        @media (max-width: 600px) { .search-input-group { flex-direction: column; } .detail-row { flex-direction: column; text-align: center; gap: 5px; } .value { width: 100%; text-align: center; } .label { width: 100%; } }
+    </style>
+</head>
+<body>
+
+    <header class="verify-header">
+        <h1><i class="fa fa-shield-alt"></i> Official Document Verification</h1>
+        <p>Jai Janta Education Society, Kinhiraja</p>
+    </header>
+
+    <div class="verify-container">
+        
+        <!-- Manual Search Box -->
+        <div class="search-card">
+            <h3>Enter PEN to Verify Certificate</h3>
+            <div class="search-input-group">
+                <input type="text" id="manualPenInput" placeholder="Enter 11-Digit PEN..." required>
+                <button onclick="manualSearch()"><i class="fa fa-search"></i> Verify</button>
+            </div>
+        </div>
+
+        <!-- Loading Animation -->
+        <div id="loading-state">
+            <i class="fa fa-circle-notch fa-spin"></i>
+            <h3>Connecting to Secure Database...</h3>
+            <p style="color: #64748b; font-size: 14px;">Verifying credentials, please wait.</p>
+        </div>
+
+        <!-- Result Container -->
+        <div id="result-state">
+            <!-- Data injected dynamically by JavaScript -->
+        </div>
+
+    </div>
+
+    <script>
+        // ==========================================
+        // CONFIGURATION: REPLACE THIS URL WITH YOUR NEW GOOGLE APPS SCRIPT WEB APP URL
+        // ==========================================
+        const API_URL = "https://script.google.com/macros/s/AKfycbyoKBzkf-UQ-hZqBSuHLUGqZ18lPTFjcwC-ZQr5lkFBYbeDS4OzAO7suf01l9XLZv7IYw/exec"; 
+        
+        // Check URL for PEN when page loads
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const verifyPenFromUrl = urlParams.get('verify');
+            
+            if (verifyPenFromUrl) {
+                document.getElementById('manualPenInput').value = verifyPenFromUrl;
+                performVerification(verifyPenFromUrl);
+                
+                // Clean the URL so it looks neat to the user
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        });
+
+        // Triggered by button click
+        function manualSearch() {
+            const pen = document.getElementById('manualPenInput').value.trim();
+            if (pen === "") {
+                alert("Please enter a valid PEN number.");
+                return;
+            }
+            performVerification(pen);
+        }
+
+        // Connects to Google Sheet JSON API
+        function performVerification(pen) {
+            document.getElementById('result-state').style.display = 'none';
+            document.getElementById('loading-state').style.display = 'block';
+
+            // We append action=api_verify to talk to our new logic block in Code.gs
+            const fetchUrl = `${API_URL}?action=api_verify&pen=${pen}`;
+
+            fetch(fetchUrl)
+                .then(response => response.json())
+                .then(result => {
+                    document.getElementById('loading-state').style.display = 'none';
+                    const resultContainer = document.getElementById('result-state');
+                    
+                    if (result.status === "success") {
+                        const data = result.data;
+                        resultContainer.innerHTML = `
+                            <div class="result-card success-card">
+                                <div class="header-icon success-icon"><i class="fa fa-check-circle"></i></div>
+                                <h2>Verified Authentic</h2>
+                                <div class="status-text status-success">OFFICIAL DIGITAL RECORD FOUND</div>
+                                
+                                <div class="detail-row"><div class="label">Institution</div><div class="value" style="color: #0b4a8e;">${data.institutionName}</div></div>
+                                <div class="detail-row"><div class="label">Student Name</div><div class="value">${data.name.toUpperCase()}</div></div>
+                                <div class="detail-row"><div class="label">Class & Course</div><div class="value">${data.className}</div></div>
+                                <div class="detail-row"><div class="label">Date of Birth</div><div class="value">${data.dob}</div></div>
+                                <div class="detail-row"><div class="label">General Register No.</div><div class="value">${data.grNo}</div></div>
+                                <div class="detail-row"><div class="label">Caste & Category</div><div class="value">${data.caste} (${data.category})</div></div>
+                                <div class="detail-row"><div class="label">Academic Session</div><div class="value">${data.session}</div></div>
+
+                                <div class="footer-note">This certificate was digitally generated and verified by the Jai Janta Education Society Secure Database.</div>
+                            </div>
+                        `;
+                    } else {
+                        resultContainer.innerHTML = `
+                            <div class="result-card error-card">
+                                <div class="header-icon error-icon"><i class="fa fa-times-circle"></i></div>
+                                <h2>Verification Failed</h2>
+                                <div class="status-text status-error">INVALID OR FAKE CERTIFICATE</div>
+                                
+                                <p style="text-align: center; color: #475569; font-size: 15px; margin-top: 20px;">
+                                    The system could not find any official record matching this QR Code or PEN number. This document may be invalid, forged, or altered.
+                                </p>
+                                
+                                <div class="footer-note">Contact Administration: admin@naikcollege.com</div>
+                            </div>
+                        `;
+                    }
+                    resultContainer.style.display = 'block';
+                })
+                .catch(error => {
+                    document.getElementById('loading-state').style.display = 'none';
+                    alert("Network Error. Please try again later.");
+                });
+        }
+    </script>
+
+</body>
+</html>
