@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Jai Janta Education Society, Kinhiraja</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Page Specific Styles (Keeps your main style.css clean) -->
+    <style>
+        .page-header {
+            background: linear-gradient(rgba(11, 74, 142, 0.85), rgba(11, 74, 142, 0.85)), url('images/gallery-1.jpg') center/cover;
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .page-header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .breadcrumb {
+            font-size: 14px;
+            font-weight: 400;
+        }
+        .breadcrumb a {
+            color: #f7941d;
+            text-decoration: none;
+        }
+        
+        .about-intro {
+            line-height: 1.8;
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+        
+        /* Vision & Mission Cards */
+        .v-m-card {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            text-align: center;
+            border-top: 4px solid #f7941d;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .v-m-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .v-m-icon {
+            font-size: 40px;
+            color: #0b4a8e;
+            margin-bottom: 20px;
+        }
+        .v-m-card h3 {
+            color: #0b4a8e;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        .v-m-card p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* Principal's Desk Section */
+        .message-box {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            padding: 40px;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            border-left: 5px solid #0b4a8e;
+        }
+        .message-img {
+            flex: 0 0 250px;
+            text-align: center;
+        }
+        .message-img img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #f4f7fb;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .message-content {
+            flex: 1;
+        }
+        .message-content h3 {
+            color: #0b4a8e;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .message-content h5 {
+            color: #f7941d;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .message-content p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 15px;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        .quote-icon {
+            font-size: 30px;
+            color: #e2e8f0;
+            margin-bottom: -15px;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .message-box {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+            .message-content p {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar (Identical to index.html) -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="contact-info">
+                <span><i class="fa fa-phone"></i> +91 8149797952</span>
+                <span><i class="fa fa-envelope"></i> admin@naikcollege.com</span>
+            </div>
+            <div class="top-links">
+                <a href="admin-login.html" class="admin-link"><i class="fa fa-lock"></i> Admin Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Society Banner (Identical to index.html) -->
+    <div class="society-banner">
+        <div class="container">
+            <img src="images/banner.jpeg" alt="Jai Janta Education Society Banner" class="banner-img">
+        </div>
+    </div>
+
+    <!-- Main Navigation (Identical to index.html, but 'About Us' is active) -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="mobile-menu-toggle" id="mobile-menu">
+                <i class="fa fa-bars"></i> Menu
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About Us</a></li>
+                <li><a href="academics.html">Academics</a></li>
+                <li><a href="admissions.html">Admissions</a></li>
+                <li><a href="facilities.html">Facilities</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="student-portal.html" class="highlight-link">Student Portal</a></li>
+                <li><a href="faculty.html">Faculty</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>About Our Society</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / About Us
+            </div>
+        </div>
+    </header>
+
+    <!-- History & Introduction Section -->
+    <section>
+        <div class="container">
+            <div class="grid-container grid-2" style="align-items: center;">
+                <div>
+                    <h2 class="section-title" style="text-align: left;">Our Journey & Legacy</h2>
+                    <p class="about-intro">
+                        <strong>Jai Janta Education Society, Fulumari Ta. Manora Dist. Washim</strong>, operating through our expansive educational complex in Kinhiraja, is a beacon of knowledge and empowerment for rural youth. Founded with a deep commitment to social upliftment, our society has grown into a multi-disciplinary institution providing education from the primary level all the way to senior degree courses.
+                    </p>
+                    <p class="about-intro">
+                        Our campus houses six distinct institutions, ranging from Ashram Schools that provide residential education to marginalized communities, to specialized Science, Arts, MCVC, and Senior Degree Colleges. We believe that true education goes beyond textbooks; it is about building character, instilling values, and equipping students with the modern skills necessary to thrive in a competitive world.
+                    </p>
+                    <p class="about-intro">
+                        Driven by the ideology of our great inspiration, Late Vishal Bhau Chavhan, we continually strive to bridge the educational divide, ensuring that every student in the Washim district has access to high-quality, holistic, and technology-driven education.
+                    </p>
+                </div>
+                <div>
+                    <!-- Reusing a gallery image as a placeholder for the campus photo -->
+                    <img src="images/gallery-2.jpg" alt="Our Campus" style="border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 100%;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision, Mission & Values -->
+    <section class="bg-light">
+        <div class="container">
+            <h2 class="section-title">Our Philosophy</h2>
+            <p class="section-subtitle">The guiding principles that shape our educational approach.</p>
+            
+            <div class="grid-container grid-3">
+                <!-- Vision -->
+                <div class="v-m-card">
+                    <i class="fa fa-eye v-m-icon"></i>
+                    <h3>Our Vision</h3>
+                    <p>To emerge as a premier educational hub in rural Maharashtra that transforms lives through quality education, empowering students to become socially responsible, culturally rooted, and globally competent citizens.</p>
+                </div>
+                
+                <!-- Mission -->
+                <div class="v-m-card">
+                    <i class="fa fa-bullseye v-m-icon"></i>
+                    <h3>Our Mission</h3>
+                    <p>To provide accessible, affordable, and holistic education. We aim to foster academic excellence, vocational skills, and moral integrity, ensuring every student reaches their highest potential in a secure and nurturing environment.</p>
+                </div>
+
+                <!-- Core Values -->
+                <div class="v-m-card">
+                    <i class="fa fa-gem v-m-icon"></i>
+                    <h3>Core Values</h3>
+                    <p>We are guided by the principles of <strong>Knowledge, Character, and Service</strong>. We believe in inclusive growth, discipline, innovation in teaching, and profound respect for our rich cultural heritage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dignitaries & Inspiration (Reused from index.html for consistency) -->
+    <section class="dignitaries-section">
+        <div class="container">
+            <h2 class="section-title">Leadership & Inspiration</h2>
+            
+            <div class="grid-container grid-3">
+                
+                <!-- Our Inspiration -->
+                <div class="person-profile highlight-profile">
+                    <img src="images/vishalbhau.jpg" alt="Late Vishal Bhau Chavhan" onerror="this.src='https://via.placeholder.com/200x250?text=Photo'">
+                    <h4>Late Vishal Bhau Chavhan</h4>
+                    <p class="designation">Our Inspiration & Guiding Light</p>
+                </div>
+
+                <!-- Dignitary 1 -->
+                <div class="person-profile">
+                    <img src="images/governor-img.jpg" alt="Shri J. D. Varma" onerror="this.src='https://via.placeholder.com/200x250?text=Photo'">
+                    <h4>Shri J. D. Varma</h4>
+                    <p class="designation">Hon'ble Governor of Maharashtra</p>
+                </div>
+
+                <!-- Dignitary 2 -->
+                <div class="person-profile">
+                    <img src="images/principal-img.jpg" alt="Prof. G. S. Pawar" onerror="this.src='https://via.placeholder.com/200x250?text=Photo'">
+                    <h4>Prof. G. S. Pawar</h4>
+                    <p class="designation">Principal, Vasantrao Naik Secondary & Hr. Sec. Science Ashram School</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Principal's Desk / Message -->
+    <section style="padding-top: 0;">
+        <div class="container">
+            <div class="message-box">
+                <div class="message-img">
+                    <img src="images/principal-img.jpg" alt="Prof. G. S. Pawar" onerror="this.src='https://via.placeholder.com/200x250?text=Photo'">
+                    <h4 style="margin-top: 15px; color: #0b4a8e;">Prof. G. S. Pawar</h4>
+                    <p style="font-size: 13px; color: #666;">Principal</p>
+                </div>
+                <div class="message-content">
+                    <i class="fa fa-quote-left quote-icon"></i>
+                    <h3>From the Principal's Desk</h3>
+                    <h5>"Education is the most powerful weapon which you can use to change the world."</h5>
+                    <p>
+                        Welcome to the Jai Janta Education Society campus in Kinhiraja. It gives me immense pleasure to lead an institution that is deeply committed to the intellectual, physical, and moral development of our students. Our focus has always been on providing a rigorous academic framework coupled with rich extracurricular opportunities.
+                    </p>
+                    <p>
+                        In today's rapidly changing world, it is essential that we prepare our youth not just with degrees, but with real-world skills, critical thinking, and a strong ethical compass. Our dedicated faculty members work tirelessly to ensure that every student, regardless of their background, receives personalized attention and the best possible resources.
+                    </p>
+                    <p>
+                        Through our various departments—from Primary Ashram Schools to our Senior Degree College—we are building a seamless pathway for lifelong learning. I invite parents and students to join hands with us in this noble journey of education and empowerment.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Identical to index.html) -->
+    <footer class="footer">
+        <div class="container grid-container grid-4">
+            
+            <div class="footer-col">
+                <h3>About Society</h3>
+                <p>Jai Janta Education Society, Fulumari Ta. Manora Dist. Washim is dedicated to providing quality education, skill development, and strong moral values to rural students in Kinhiraja, Washim.</p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="facilities.html">Hostel & Facilities</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Portals</h3>
+                <ul>
+                    <li><a href="student-portal.html">Student Portal (Leave & Docs)</a></li>
+                    <li><a href="faculty.html">Faculty Directory</a></li>
+                    <li><a href="verify-id.html">Verify Digital ID</a></li>
+                    <li><a href="admin-login.html">Admin Login</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Get In Touch</h3>
+                <ul class="contact-details">
+                    <li><i class="fa fa-map-marker-alt"></i> Kinhiraja, Ta. Malegaon, Dist. Washim</li>
+                    <li><i class="fa fa-phone"></i> +91 8149797952</li>
+                    <li><i class="fa fa-envelope"></i> admin@naikcollege.com</li>
+                </ul>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <p>&copy; 2025 Jai Janta Education Society, Kinhiraja. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Script -->
+    <script src="js/app.js"></script>
+</body>
+</html>
