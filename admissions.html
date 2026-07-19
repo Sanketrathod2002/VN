@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions | Jai Janta Education Society, Kinhiraja</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Premium Admission Styles -->
+    <style>
+        .page-header {
+            background: linear-gradient(rgba(11, 74, 142, 0.9), rgba(11, 74, 142, 0.9)), url('images/gallery-4.jpg') center/cover;
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .page-header h1 {
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .breadcrumb {
+            font-size: 14px;
+            font-weight: 400;
+            color: #e2e8f0;
+        }
+        .breadcrumb a {
+            color: #f7941d;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Admission Process Steps */
+        .process-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .process-step {
+            text-align: center;
+            padding: 40px 25px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            position: relative;
+            border: 1px solid #edf2f7;
+            border-bottom: 5px solid #f7941d;
+            transition: all 0.4s ease;
+            z-index: 1;
+        }
+        .process-step:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(11, 74, 142, 0.1);
+            border-bottom-color: #0b4a8e;
+        }
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #0b4a8e, #1a73e8);
+            color: #fff;
+            font-size: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 25px auto;
+            box-shadow: 0 5px 15px rgba(11, 74, 142, 0.2);
+        }
+        .process-step h3 {
+            color: #1a202c;
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .process-step p {
+            color: #4a5568;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* Required Documents */
+        .docs-section {
+            background: #f9fbfd;
+            padding: 70px 0;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .doc-card {
+            background: #fff;
+            padding: 20px 25px;
+            border-radius: 10px;
+            border-left: 5px solid #0b4a8e;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s ease;
+        }
+        .doc-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-left-color: #f7941d;
+        }
+        .doc-card i {
+            font-size: 26px;
+            color: #f7941d;
+            background: #fff5eb;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+        .doc-card h4 {
+            color: #2d3748;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        /* Detailed Enquiry Form */
+        .enquiry-section {
+            padding: 80px 0;
+        }
+        .form-wrapper {
+            background: #fff;
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+            border: 1px solid #edf2f7;
+            position: relative;
+            overflow: hidden;
+        }
+        .form-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #0b4a8e, #f7941d);
+        }
+        .form-section-title {
+            color: #0b4a8e;
+            font-size: 20px;
+            font-weight: 600;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            margin-top: 30px;
+        }
+        .form-section-title:first-child {
+            margin-top: 0;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+        .form-row.three-col {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group label {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .form-control {
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: 'Poppins', sans-serif;
+            color: #2d3748;
+            transition: all 0.3s;
+        }
+        .form-control:focus {
+            border-color: #0b4a8e;
+            background-color: #fff;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(11, 74, 142, 0.1);
+        }
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, #0b4a8e, #1a73e8);
+            color: #fff;
+            padding: 16px 35px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .btn-submit:hover {
+            background: linear-gradient(135deg, #1a73e8, #0b4a8e);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(11, 74, 142, 0.3);
+        }
+
+        /* Map Location Banner */
+        .map-banner {
+            background: #1a202c;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+            border-radius: 12px;
+            margin-top: 50px;
+            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%232d3748" fill-opacity="0.4"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+        }
+        .btn-directions {
+            background: #f7941d;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(247, 148, 29, 0.3);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-directions:hover {
+            background: #e08316;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 900px) {
+            .form-row, .form-row.three-col {
+                grid-template-columns: 1fr;
+            }
+            .form-wrapper {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="contact-info">
+                <span><i class="fa fa-phone"></i> +91 8149797952</span>
+                <span><i class="fa fa-envelope"></i> admin@naikcollege.com</span>
+            </div>
+            <div class="top-links">
+                <a href="admin-login.html" class="admin-link"><i class="fa fa-lock"></i> Admin Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Society Banner -->
+    <div class="society-banner">
+        <div class="container">
+            <img src="images/banner.jpeg" alt="Jai Janta Education Society Banner" class="banner-img">
+        </div>
+    </div>
+
+    <!-- Main Navigation ('Admissions' is active) -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="mobile-menu-toggle" id="mobile-menu">
+                <i class="fa fa-bars"></i> Menu
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="academics.html">Academics</a></li>
+                <li><a href="admissions.html" class="active">Admissions</a></li>
+                <li><a href="facilities.html">Facilities</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="student-portal.html" class="highlight-link">Student Portal</a></li>
+                <li><a href="faculty.html">Faculty</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Admissions 2026-2027</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / Admissions
+            </div>
+        </div>
+    </header>
+
+    <!-- Admission Process -->
+    <section style="padding-top: 0;">
+        <div class="container">
+            <h2 class="section-title">Step-by-Step Admission Process</h2>
+            <p class="section-subtitle">A simple, transparent, and merit-based procedure to join our educational complex.</p>
+            
+            <div class="process-container">
+                <div class="process-step">
+                    <div class="step-icon"><i class="fa fa-laptop"></i></div>
+                    <h3>1. Online Enquiry</h3>
+                    <p>Fill out the detailed admission enquiry form below to register your interest in our programs.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon"><i class="fa fa-folder-open"></i></div>
+                    <h3>2. Document Submission</h3>
+                    <p>Visit the campus office to submit your application form along with verified academic and identity documents.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon"><i class="fa fa-clipboard-check"></i></div>
+                    <h3>3. Merit & Verification</h3>
+                    <p>For higher secondary and degree courses, wait for the merit list. Documents will be strictly verified.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon"><i class="fa fa-rupee-sign"></i></div>
+                    <h3>4. Fee Confirmation</h3>
+                    <p>Pay the admission fees or submit scholarship/freeship forms to formally secure your seat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Required Documents -->
+    <section class="docs-section">
+        <div class="container">
+            <h2 class="section-title">Required Documents Checklist</h2>
+            <p class="section-subtitle">Please bring original and 2 sets of attested photocopies during the physical admission process.</p>
+            
+            <div class="docs-grid">
+                <div class="doc-card">
+                    <i class="fa fa-id-card"></i>
+                    <h4>Aadhar Card (Student & Parents)</h4>
+                </div>
+                <div class="doc-card">
+                    <i class="fa fa-file-alt"></i>
+                    <h4>Previous Year Marksheet</h4>
+                </div>
+                <div class="doc-card">
+                    <i class="fa fa-file-signature"></i>
+                    <h4>School Leaving Certificate (TC)</h4>
+                </div>
+                <div class="doc-card">
+                    <i class="fa fa-users"></i>
+                    <h4>Caste & Validity Certificate</h4>
+                </div>
+                <div class="doc-card">
+                    <i class="fa fa-camera-retro"></i>
+                    <h4>4 Recent Passport Size Photos</h4>
+                </div>
+                <div class="doc-card">
+                    <i class="fa fa-money-check-alt"></i>
+                    <h4>Bank Passbook Front Page</h4>
+                </div>
+                <div class="doc-card">
+                    <i class="fa fa-home"></i>
+                    <h4>Income & Domicile Certificate</h4>
+                </div>
+                <div class="doc-card">
+                    <i class="fa fa-address-card"></i>
+                    <h4>AAPAR / ABC ID</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Enquiry Form linked to Google Sheets -->
+    <section class="enquiry-section">
+        <div class="container">
+            <h2 class="section-title">Detailed Admission Application Form</h2>
+            <p class="section-subtitle">Submit your academic details securely. Our admission department will process your application.</p>
+            
+            <div class="form-wrapper">
+                <form id="admissionForm" name="admissionForm">
+                    
+                    <!-- Hidden field to tell Apps Script which sheet to use -->
+                    <input type="hidden" name="sheetName" value="Admission Queries">
+                    
+                    <!-- Section 1: Personal Details -->
+                    <h3 class="form-section-title"><i class="fa fa-user"></i> Personal Details</h3>
+                    <div class="form-row three-col">
+                        <div class="form-group">
+                            <label for="studentName">Student's Full Name *</label>
+                            <input type="text" id="studentName" name="studentName" class="form-control" placeholder="Surname First Name Middle Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dob">Date of Birth *</label>
+                            <input type="date" id="dob" name="dob" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Gender *</label>
+                            <select id="gender" name="gender" class="form-control" required>
+                                <option value="">-- Select Gender --</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row three-col">
+                        <div class="form-group">
+                            <label for="category">Category / Caste *</label>
+                            <select id="category" name="category" class="form-control" required>
+                                <option value="">-- Select Category --</option>
+                                <option value="Open">Open</option>
+                                <option value="OBC">OBC</option>
+                                <option value="SC">SC</option>
+                                <option value="ST">ST</option>
+                                <option value="VJ/NT">VJ / NT</option>
+                                <option value="SBC">SBC</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="parentName">Parent/Guardian Name *</label>
+                            <input type="text" id="parentName" name="parentName" class="form-control" placeholder="Enter parent's name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneNo">Contact Number *</label>
+                            <input type="tel" id="phoneNo" name="phoneNo" class="form-control" placeholder="10-digit number" pattern="[0-9]{10}" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" style="margin-bottom: 25px;">
+                        <label for="emailId">Email Address (Optional)</label>
+                        <input type="email" id="emailId" name="emailId" class="form-control" placeholder="Enter active email address">
+                    </div>
+
+                    <!-- Section 2: Academic Details -->
+                    <h3 class="form-section-title"><i class="fa fa-graduation-cap"></i> Academic Details</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="prevSchool">Previous School / College Attended *</label>
+                            <input type="text" id="prevSchool" name="prevSchool" class="form-control" placeholder="Name of previous institution" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="marks">Percentage / Grade Obtained *</label>
+                            <input type="text" id="marks" name="marks" class="form-control" placeholder="E.g., 85.5% or A Grade" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="department">Select Department / School Applying For *</label>
+                            <select id="department" name="department" class="form-control" required>
+                                <option value="">-- Select Institution --</option>
+                                <option value="Baliram Appa Gondal Primary">Baliram Appa Gondal Primary Ashram School</option>
+                                <option value="Vasantrao Naik Secondary">Vasantrao Naik Secondary Ashram School</option>
+                                <option value="Sudhakarrao Naik Science">Sudhakarrao Naik Hr. Sec. Science Ashram</option>
+                                <option value="Vasantrao Naik Arts">Vasantrao Naik Hr. Sec. Junior Arts College</option>
+                                <option value="Vasantrao Naik MCVC">Vasantrao Naik MCVC College</option>
+                                <option value="Vishalbhau Senior College">Late. Vishalbhau Chavhan Senior College</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="admissionClass">Standard / Course Applying For *</label>
+                            <input type="text" id="admissionClass" name="admissionClass" class="form-control" placeholder="E.g., 11th Science, B.A. 1st Year, 5th Std" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 30px;">
+                        <label for="address">Permanent Residential Address *</label>
+                        <textarea id="address" name="address" class="form-control" placeholder="Enter complete address including Village, Taluka, District, and Pincode" required></textarea>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="btn-submit">
+                        <span>Submit Admission Form</span> <i class="fa fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Google Map Directions Box -->
+            <div class="map-banner">
+                <h3 style="margin-bottom: 10px; font-size: 24px;">Ready to submit your documents?</h3>
+                <p style="color: #cbd5e1;">Visit our administration office at the Kinhiraja campus.</p>
+                <a href="https://maps.app.goo.gl/RCzmBNLpr93kjCfm6" target="_blank" class="btn-directions">
+                    <i class="fa fa-map-marker-alt"></i> Get Google Map Directions
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container grid-container grid-4">
+            
+            <div class="footer-col">
+                <h3>About Society</h3>
+                <p>Jai Janta Education Society, Fulumari Ta. Manora Dist. Washim is dedicated to providing quality education, skill development, and strong moral values to rural students in Kinhiraja, Washim.</p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="facilities.html">Hostel & Facilities</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Portals</h3>
+                <ul>
+                    <li><a href="student-portal.html">Student Portal (Leave & Docs)</a></li>
+                    <li><a href="faculty.html">Faculty Directory</a></li>
+                    <li><a href="verify-id.html">Verify Digital ID</a></li>
+                    <li><a href="admin-login.html">Admin Login</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Get In Touch</h3>
+                <ul class="contact-details">
+                    <li><i class="fa fa-map-marker-alt"></i> Kinhiraja, Ta. Malegaon, Dist. Washim</li>
+                    <li><i class="fa fa-phone"></i> +91 8149797952</li>
+                    <li><i class="fa fa-envelope"></i> admin@naikcollege.com</li>
+                </ul>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <p>&copy; 2026 Jai Janta Education Society, Kinhiraja. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main Navigation Script -->
+    <script src="js/app.js"></script>
+
+    <!-- Google Sheet Form Submission Script -->
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwvG4JWT0pWDJriOo7yYtfg8B_HOJ6vE9FEb7dUvVGoCb6NeG4J8Fw12lwB1nqZAEiI/exec';
+        const form = document.forms['admissionForm'];
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault(); // Prevent page refresh
+            
+            // UI Loading State
+            const originalBtnHtml = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span>Processing Data...</span> <i class="fa fa-spinner fa-spin"></i>';
+            submitBtn.disabled = true;
+
+            // Fetch POST Request with 'no-cors' added to fix the error
+            fetch(scriptURL, { 
+                method: 'POST', 
+                body: new FormData(form),
+                mode: 'no-cors'
+            })
+            .then(response => {
+                alert('Admission Application Submitted Successfully! Our administration team will contact you shortly.');
+                form.reset(); // Clear the form
+                submitBtn.innerHTML = originalBtnHtml; // Restore button
+                submitBtn.disabled = false;
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert('Error! Something went wrong while submitting the application. Please try again.');
+                submitBtn.innerHTML = originalBtnHtml; // Restore button
+                submitBtn.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html>
