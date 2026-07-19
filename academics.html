@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academics | Jai Janta Education Society, Kinhiraja</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Page Specific Styles (Keeps your main style.css clean) -->
+    <style>
+        .page-header {
+            background: linear-gradient(rgba(11, 74, 142, 0.85), rgba(11, 74, 142, 0.85)), url('images/gallery-3.jpg') center/cover;
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .page-header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .breadcrumb {
+            font-size: 14px;
+            font-weight: 400;
+        }
+        .breadcrumb a {
+            color: #f7941d;
+            text-decoration: none;
+        }
+
+        .academic-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+            color: #555;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* Academic Sections */
+        .academic-section {
+            padding: 60px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .academic-section:nth-child(even) {
+            background-color: #f9fbfd;
+        }
+        
+        .school-title {
+            color: #0b4a8e;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .school-title img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: contain;
+            background: #fff;
+            border: 2px solid #e2e8f0;
+            padding: 2px;
+        }
+
+        .school-desc {
+            color: #666;
+            font-size: 15px;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        /* Course Grid */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        .course-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid #f7941d;
+            transition: all 0.3s ease;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .course-card h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 20px;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 10px;
+        }
+
+        .medium-badge {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #0b4a8e;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            margin-right: 5px;
+        }
+        .medium-badge.arts { background: #fdf2e3; color: #d97706; }
+        .medium-badge.science { background: #e3fdf5; color: #059669; }
+        .medium-badge.mcvc { background: #f3e8ff; color: #7c3aed; }
+
+        .subject-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 15px;
+        }
+        .subject-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+            font-size: 14px;
+        }
+        .subject-list li::before {
+            content: '\f105';
+            font-family: 'FontAwesome';
+            position: absolute;
+            left: 0;
+            color: #f7941d;
+            font-weight: bold;
+        }
+
+        /* Methodology */
+        .methodology-box {
+            background: #0b4a8e;
+            color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .methodology-box h3 {
+            color: #f7941d;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .methodology-box p {
+            color: #e2e8f0;
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="contact-info">
+                <span><i class="fa fa-phone"></i> +91 8149797952</span>
+                <span><i class="fa fa-envelope"></i> admin@naikcollege.com</span>
+            </div>
+            <div class="top-links">
+                <a href="admin-login.html" class="admin-link"><i class="fa fa-lock"></i> Admin Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Society Banner -->
+    <div class="society-banner">
+        <div class="container">
+            <img src="images/banner.jpeg" alt="Jai Janta Education Society Banner" class="banner-img">
+        </div>
+    </div>
+
+    <!-- Main Navigation ('Academics' is active) -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="mobile-menu-toggle" id="mobile-menu">
+                <i class="fa fa-bars"></i> Menu
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="academics.html" class="active">Academics</a></li>
+                <li><a href="admissions.html">Admissions</a></li>
+                <li><a href="facilities.html">Facilities</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="student-portal.html" class="highlight-link">Student Portal</a></li>
+                <li><a href="faculty.html">Faculty</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Academic Programs</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / Academics
+            </div>
+        </div>
+    </header>
+
+    <!-- Introduction -->
+    <div class="container">
+        <p class="academic-intro">
+            Jai Janta Education Society provides a continuous and comprehensive educational pathway from standard 1st up to graduate degrees. Our curriculum is designed strictly as per the State Board and affiliated University guidelines, ensuring students receive recognized, high-quality instruction augmented with practical skills and ethical grounding.
+        </p>
+    </div>
+
+    <!-- 1. Primary School -->
+    <section class="academic-section">
+        <div class="container">
+            <h2 class="school-title">
+                <img src="images/BAGPrimary.jpeg" alt="Logo" onerror="this.src='https://via.placeholder.com/50'">
+                Baliram Appa Gondal Primary Ashram School
+            </h2>
+            <p class="school-desc">Building a strong foundation for lifelong learning. Our primary section focuses on developing basic literacy, numeracy, and social skills in a nurturing environment tailored for young minds.</p>
+            
+            <div class="course-grid">
+                <div class="course-card">
+                    <span class="medium-badge">1st to 4th Standard</span>
+                    <span class="medium-badge arts">Marathi Medium</span>
+                    <h3>Core Subjects</h3>
+                    <ul class="subject-list">
+                        <li>Marathi (First Language)</li>
+                        <li>English</li>
+                        <li>Hindi</li>
+                        <li>Mathematics</li>
+                        <li>Science</li>
+                        <li>History</li>
+                        <li>Geography</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Secondary School -->
+    <section class="academic-section">
+        <div class="container">
+            <h2 class="school-title">
+                <img src="images/vnsecondary.jpeg" alt="Logo" onerror="this.src='https://via.placeholder.com/50'">
+                Vasantrao Naik Secondary Ashram School
+            </h2>
+            <p class="school-desc">Preparing students for the crucial SSC Board Examinations. We offer both Marathi and Semi-English mediums to cater to diverse student backgrounds while maintaining high academic rigor.</p>
+            
+            <div class="course-grid">
+                <div class="course-card">
+                    <span class="medium-badge">5th to 10th Standard</span>
+                    <span class="medium-badge">Marathi Medium</span>
+                    <h3>Curriculum Overview</h3>
+                    <ul class="subject-list">
+                        <li>Languages: Marathi, Hindi, English</li>
+                        <li>Mathematics (Algebra & Geometry)</li>
+                        <li>General Science</li>
+                        <li>Social Sciences (History, Civics, Geography)</li>
+                        <li>Information Technology & Personality Development</li>
+                    </ul>
+                </div>
+                <div class="course-card">
+                    <span class="medium-badge">5th to 10th Standard</span>
+                    <span class="medium-badge science">Semi-English Medium</span>
+                    <h3>Curriculum Overview</h3>
+                    <ul class="subject-list">
+                        <li>Languages: Marathi, Hindi, English</li>
+                        <li><strong>Mathematics (Taught in English)</strong></li>
+                        <li><strong>General Science (Taught in English)</strong></li>
+                        <li>Social Sciences (Taught in Marathi)</li>
+                        <li>Information Technology</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Higher Secondary Science -->
+    <section class="academic-section">
+        <div class="container">
+            <h2 class="school-title">
+                <img src="images/snscience.jpeg" alt="Logo" onerror="this.src='https://via.placeholder.com/50'">
+                Sudhakarrao Naik Hr. Sec. Science Ashram School
+            </h2>
+            <p class="school-desc">Equipping students with advanced scientific knowledge and analytical skills, preparing them for HSC Board Exams and competitive entrance tests (MHT-CET, NEET, JEE).</p>
+            
+            <div class="course-grid">
+                <div class="course-card">
+                    <span class="medium-badge">11th & 12th Standard</span>
+                    <span class="medium-badge science">General Science Stream</span>
+                    <h3>Main Subjects</h3>
+                    <ul class="subject-list">
+                        <li>English</li>
+                        <li>Marathi</li>
+                        <li>Physics (Theory & Practical)</li>
+                        <li>Chemistry (Theory & Practical)</li>
+                        <li>Biology (Theory & Practical)</li>
+                        <li>Mathematics & Statistics</li>
+                        <li>Environment Education & Water Security</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Higher Secondary Arts -->
+    <section class="academic-section">
+        <div class="container">
+            <h2 class="school-title">
+                <img src="images/vnarts.jpeg" alt="Logo" onerror="this.src='https://via.placeholder.com/50'">
+                Vasantrao Naik Hr. Sec. Junior Arts College
+            </h2>
+            <p class="school-desc">Fostering critical thinking, cultural awareness, and a deep understanding of humanities and social sciences.</p>
+            
+            <div class="course-grid">
+                <div class="course-card">
+                    <span class="medium-badge">11th & 12th Standard</span>
+                    <span class="medium-badge arts">Arts Stream (Marathi Medium)</span>
+                    <h3>Main Subjects</h3>
+                    <ul class="subject-list">
+                        <li>English</li>
+                        <li>Marathi</li>
+                        <li>History</li>
+                        <li>Geography</li>
+                        <li>Political Science</li>
+                        <li>Sociology / Economics</li>
+                        <li>Environment Education & Water Security</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. MCVC College -->
+    <section class="academic-section">
+        <div class="container">
+            <h2 class="school-title">
+                <img src="images/vnmcvc.jpeg" alt="Logo" onerror="this.src='https://via.placeholder.com/50'">
+                Vasantrao Naik MCVC College
+            </h2>
+            <p class="school-desc">Minimum Competency Vocational Courses (MCVC) designed to provide immediate employability and practical skill sets for self-reliance.</p>
+            
+            <div class="course-grid">
+                <div class="course-card">
+                    <span class="medium-badge">11th & 12th Standard</span>
+                    <span class="medium-badge mcvc">Vocational Stream</span>
+                    <h3>Vocational Trades Offered</h3>
+                    <ul class="subject-list">
+                        <li>Accounting & Office Management</li>
+                        <li>Auto Engineering Technician</li>
+                        <li>Electrical Technology</li>
+                        <li>Electronics Technology</li>
+                        <li>Practical Workshops & On-Job Training (OJT)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Senior College -->
+    <section class="academic-section" style="border-bottom: none;">
+        <div class="container">
+            <h2 class="school-title">
+                <img src="images/vbcdegree.jpeg" alt="Logo" onerror="this.src='https://via.placeholder.com/50'">
+                Late. Vishalbhau Chavhan Senior (Graduate) College
+            </h2>
+            <p class="school-desc">Offering comprehensive undergraduate degree programs affiliated with the state university, empowering youth with higher education for professional careers.</p>
+            
+            <div class="course-grid">
+                <div class="course-card">
+                    <span class="medium-badge">Undergraduate</span>
+                    <span class="medium-badge arts">Bachelor of Arts (B.A.)</span>
+                    <h3>Course Details</h3>
+                    <ul class="subject-list">
+                        <li>Duration: 3 Years (6 Semesters)</li>
+                        <li>Compulsory English & Marathi</li>
+                        <li>Specializations in History, Political Science, Economics, and Sociology</li>
+                        <li>Internal Assessments & University Exams</li>
+                    </ul>
+                </div>
+                <div class="course-card">
+                    <span class="medium-badge">Undergraduate</span>
+                    <span class="medium-badge">Bachelor of Commerce (B.Com)</span>
+                    <h3>Course Details</h3>
+                    <ul class="subject-list">
+                        <li>Duration: 3 Years (6 Semesters)</li>
+                        <li>Financial Accounting & Costing</li>
+                        <li>Business Management & Economics</li>
+                        <li>Corporate Law & Taxation</li>
+                        <li>Internal Assessments & University Exams</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Teaching Methodology Banner -->
+            <div class="methodology-box">
+                <h3>Our Teaching Methodology</h3>
+                <p>
+                    Across all our institutions, we employ a student-centric approach. We blend traditional classroom teaching with modern digital aids, practical laboratory sessions, field visits, and continuous comprehensive evaluation (CCE). We believe in inclusive education where remedial coaching is provided for slow learners, and advanced guidance is available for competitive examinations.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container grid-container grid-4">
+            
+            <div class="footer-col">
+                <h3>About Society</h3>
+                <p>Jai Janta Education Society, Fulumari Ta. Manora Dist. Washim is dedicated to providing quality education, skill development, and strong moral values to rural students in Kinhiraja, Washim.</p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="facilities.html">Hostel & Facilities</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Portals</h3>
+                <ul>
+                    <li><a href="student-portal.html">Student Portal (Leave & Docs)</a></li>
+                    <li><a href="faculty.html">Faculty Directory</a></li>
+                    <li><a href="verify-id.html">Verify Digital ID</a></li>
+                    <li><a href="admin-login.html">Admin Login</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Get In Touch</h3>
+                <ul class="contact-details">
+                    <li><i class="fa fa-map-marker-alt"></i> Kinhiraja, Ta. Malegaon, Dist. Washim</li>
+                    <li><i class="fa fa-phone"></i> +91 8149797952</li>
+                    <li><i class="fa fa-envelope"></i> admin@naikcollege.com</li>
+                </ul>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <p>&copy; 2026 Jai Janta Education Society, Kinhiraja. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Script -->
+    <script src="js/app.js"></script>
+</body>
+</html>
