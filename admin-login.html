@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Jai Janta Education Society, Kinhiraja</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Premium Login Styles -->
+    <style>
+        body {
+            background-color: #f4f7fb;
+        }
+
+        .page-header {
+            background: linear-gradient(rgba(11, 74, 142, 0.95), rgba(11, 74, 142, 0.95)), url('images/banner.jpeg') center/cover;
+            color: #fff;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .page-header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .breadcrumb {
+            font-size: 14px;
+            font-weight: 400;
+            color: #e2e8f0;
+        }
+        .breadcrumb a {
+            color: #f7941d;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Secure Login Container */
+        .login-section {
+            padding: 20px 0 80px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .login-card {
+            background: #fff;
+            width: 100%;
+            max-width: 450px;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            overflow: hidden;
+            border: 1px solid #edf2f7;
+        }
+
+        /* Login Card Header */
+        .login-card-header {
+            background: linear-gradient(135deg, #0b4a8e, #1a73e8);
+            padding: 30px 20px;
+            text-align: center;
+            color: #fff;
+            position: relative;
+        }
+        .login-card-header::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 15px 15px 0;
+            border-style: solid;
+            border-color: #1a73e8 transparent transparent transparent;
+        }
+        .login-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+            color: #f7941d;
+            background: rgba(255,255,255,0.1);
+            width: 80px;
+            height: 80px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .login-card-header h2 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        .login-card-header p {
+            margin: 5px 0 0 0;
+            font-size: 13px;
+            color: #e2e8f0;
+        }
+
+        /* Login Card Body */
+        .login-card-body {
+            padding: 40px 35px 35px 35px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        /* Input Fields with Icons */
+        .input-wrapper {
+            position: relative;
+        }
+        .input-wrapper i.icon-left {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #a0aec0;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        .form-control {
+            width: 100%;
+            padding: 14px 15px 14px 45px;
+            border: 2px solid #e2e8f0;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: 'Poppins', sans-serif;
+            color: #2d3748;
+            transition: all 0.3s;
+            box-sizing: border-box;
+        }
+        .form-control:focus {
+            border-color: #0b4a8e;
+            background-color: #fff;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(11, 74, 142, 0.1);
+        }
+        .form-control:focus + i.icon-left {
+            color: #0b4a8e;
+        }
+        
+        /* Password Toggle Eye Icon */
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #a0aec0;
+            cursor: pointer;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        .toggle-password:hover {
+            color: #4a5568;
+        }
+
+        /* Form Options (Remember Me & Forgot Pass) */
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            font-size: 13px;
+        }
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #4a5568;
+            cursor: pointer;
+        }
+        .remember-me input[type="checkbox"] {
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+            accent-color: #0b4a8e;
+        }
+        .forgot-password {
+            color: #0b4a8e;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .forgot-password:hover {
+            color: #f7941d;
+            text-decoration: underline;
+        }
+
+        /* Login Button */
+        .btn-login {
+            background: linear-gradient(135deg, #0b4a8e, #1a73e8);
+            color: #fff;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(11, 74, 142, 0.2);
+        }
+        .btn-login:hover {
+            background: linear-gradient(135deg, #1a73e8, #0b4a8e);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(11, 74, 142, 0.3);
+        }
+        .btn-login:disabled {
+            background: #cbd5e1;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Alert Box */
+        .login-alert {
+            display: none;
+            background: #fff5f5;
+            border-left: 4px solid #e53e3e;
+            color: #c53030;
+            padding: 12px 15px;
+            border-radius: 4px;
+            font-size: 13px;
+            margin-bottom: 20px;
+            align-items: center;
+            gap: 10px;
+            animation: fadeIn 0.3s ease;
+        }
+        .login-alert i {
+            font-size: 16px;
+        }
+
+        /* Return to Home link */
+        .back-home {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #718096;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-home:hover {
+            color: #0b4a8e;
+            text-decoration: underline;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 500px) {
+            .login-section {
+                padding: 20px;
+            }
+            .login-card-body {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="contact-info">
+                <span><i class="fa fa-phone"></i> +91 8149797952</span>
+                <span><i class="fa fa-envelope"></i> admin@naikcollege.com</span>
+            </div>
+            <div class="top-links">
+                <!-- Hide the admin login link from the top bar if we are already on this page -->
+                <a href="verify-id.html" class="admin-link" style="background: #f7941d; color:#fff;"><i class="fa fa-id-badge"></i> Verify ID</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="mobile-menu-toggle" id="mobile-menu">
+                <i class="fa fa-bars"></i> Menu
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="academics.html">Academics</a></li>
+                <li><a href="admissions.html">Admissions</a></li>
+                <li><a href="facilities.html">Facilities</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="student-portal.html" class="highlight-link">Student Portal</a></li>
+                <li><a href="faculty.html">Faculty</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Secure Administration Portal</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / Admin Login
+            </div>
+        </div>
+    </header>
+
+    <!-- Secure Login Section -->
+    <section class="login-section">
+        <div class="login-card">
+            
+            <div class="login-card-header">
+                <div class="login-icon">
+                    <i class="fa fa-user-shield"></i>
+                </div>
+                <h2>Staff & Admin Login</h2>
+                <p>Enter your credentials to access the management dashboard.</p>
+            </div>
+
+            <div class="login-card-body">
+                
+                <!-- Error Alert Box (Hidden by default) -->
+                <div class="login-alert" id="loginAlert">
+                    <i class="fa fa-exclamation-circle"></i>
+                    <span id="alertMessage">Invalid Admin ID or Password.</span>
+                </div>
+
+                <form id="adminLoginForm">
+                    <div class="form-group">
+                        <label for="adminId">Admin ID / Email</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="adminId" name="adminId" class="form-control" placeholder="e.g. admin@naikcollege.com" required autocomplete="username">
+                            <i class="fa fa-envelope icon-left"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Enter your secure password" required autocomplete="current-password">
+                            <i class="fa fa-lock icon-left"></i>
+                            <i class="fa fa-eye toggle-password" id="togglePasswordBtn" title="Show/Hide Password"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox" name="remember" id="remember"> Remember me on this device
+                        </label>
+                        <a href="#" class="forgot-password" onclick="alert('Please contact the Main Society Office to reset your administrator password.'); return false;">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" id="btnLogin" class="btn-login">
+                        <span>Secure Login</span> <i class="fa fa-sign-in-alt"></i>
+                    </button>
+                </form>
+
+                <a href="index.html" class="back-home"><i class="fa fa-arrow-left"></i> Return to Homepage</a>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container grid-container grid-4">
+            
+            <div class="footer-col">
+                <h3>About Society</h3>
+                <p>Jai Janta Education Society, Fulumari Ta. Manora Dist. Washim is dedicated to providing quality education, skill development, and strong moral values to rural students in Kinhiraja, Washim.</p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="facilities.html">Hostel & Facilities</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Portals</h3>
+                <ul>
+                    <li><a href="student-portal.html">Student Portal (Leave & Docs)</a></li>
+                    <li><a href="faculty.html">Faculty Directory</a></li>
+                    <li><a href="verify-id.html">Verify Digital ID</a></li>
+                    <li><a href="admin-login.html" style="color: #f7941d;">Admin Login</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Get In Touch</h3>
+                <ul class="contact-details">
+                    <li><i class="fa fa-map-marker-alt"></i> Kinhiraja, Ta. Malegaon, Dist. Washim</li>
+                    <li><i class="fa fa-phone"></i> +91 8149797952</li>
+                    <li><i class="fa fa-envelope"></i> admin@naikcollege.com</li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <p>&copy; 2026 Jai Janta Education Society, Kinhiraja. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main Navigation Script -->
+    <script src="js/app.js"></script>
+
+    <!-- Login Specific Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // 1. Password Visibility Toggle
+            const togglePasswordBtn = document.getElementById("togglePasswordBtn");
+            const passwordInput = document.getElementById("password");
+
+            togglePasswordBtn.addEventListener("click", function () {
+                const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+                passwordInput.setAttribute("type", type);
+                
+                // Toggle the eye / eye-slash icon
+                this.classList.toggle("fa-eye");
+                this.classList.toggle("fa-eye-slash");
+            });
+
+            // 2. Form Submission Handler (Simulation)
+            const loginForm = document.getElementById("adminLoginForm");
+            const btnLogin = document.getElementById("btnLogin");
+            const loginAlert = document.getElementById("loginAlert");
+
+            loginForm.addEventListener("submit", (e) => {
+                e.preventDefault(); // Prevent actual form submission
+
+                // Hide any previous alerts
+                loginAlert.style.display = "none";
+
+                // Set loading state
+                const originalBtnContent = btnLogin.innerHTML;
+                btnLogin.innerHTML = `<span>Authenticating...</span> <i class="fa fa-spinner fa-spin"></i>`;
+                btnLogin.disabled = true;
+
+                // Simulate a network request delay (1.5 seconds)
+                setTimeout(() => {
+                    // Since this is a static frontend, we will simulate an authentication failure
+                    // In a real application, this is where you would handle the server response.
+                    
+                    loginAlert.style.display = "flex";
+                    
+                    // Reset button state
+                    btnLogin.innerHTML = originalBtnContent;
+                    btnLogin.disabled = false;
+                    passwordInput.value = ""; // Clear password field for security
+                    
+                }, 1500);
+            });
+        });
+    </script>
+</body>
+</html>
