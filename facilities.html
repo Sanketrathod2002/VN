@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facilities | Jai Janta Education Society, Kinhiraja</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Page Specific Styles -->
+    <style>
+        .page-header {
+            background: linear-gradient(rgba(11, 74, 142, 0.85), rgba(11, 74, 142, 0.85)), url('images/gallery-5.jpg') center/cover;
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .page-header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .breadcrumb {
+            font-size: 14px;
+            font-weight: 400;
+        }
+        .breadcrumb a {
+            color: #f7941d;
+            text-decoration: none;
+        }
+
+        .facility-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+            color: #555;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* Ashram Highlight Section */
+        .ashram-highlight {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            overflow: hidden;
+            margin-bottom: 60px;
+            display: flex;
+            align-items: stretch;
+            border-left: 6px solid #f7941d;
+        }
+        .ashram-img {
+            flex: 1;
+            min-height: 300px;
+            background: url('images/gallery-2.jpg') center/cover;
+        }
+        .ashram-content {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .ashram-content h3 {
+            color: #0b4a8e;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        .ashram-content p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            margin-bottom: 10px;
+            color: #444;
+            font-weight: 500;
+        }
+        .feature-list li i {
+            color: #f7941d;
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Facilities Grid */
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .facility-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+        .facility-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+        }
+        .facility-icon-wrap {
+            background: #0b4a8e;
+            color: #fff;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            position: relative;
+        }
+        .facility-icon-wrap::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 15px 15px 0;
+            border-style: solid;
+            border-color: #0b4a8e transparent transparent transparent;
+        }
+        .facility-info {
+            padding: 30px 25px 25px;
+            text-align: center;
+        }
+        .facility-info h4 {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .facility-info p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 900px) {
+            .ashram-highlight {
+                flex-direction: column;
+            }
+            .ashram-img {
+                min-height: 250px;
+            }
+            .ashram-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="contact-info">
+                <span><i class="fa fa-phone"></i> +91 8149797952</span>
+                <span><i class="fa fa-envelope"></i> admin@naikcollege.com</span>
+            </div>
+            <div class="top-links">
+                <a href="admin-login.html" class="admin-link"><i class="fa fa-lock"></i> Admin Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Society Banner -->
+    <div class="society-banner">
+        <div class="container">
+            <img src="images/banner.jpeg" alt="Jai Janta Education Society Banner" class="banner-img">
+        </div>
+    </div>
+
+    <!-- Main Navigation ('Facilities' is active) -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="mobile-menu-toggle" id="mobile-menu">
+                <i class="fa fa-bars"></i> Menu
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="academics.html">Academics</a></li>
+                <li><a href="admissions.html">Admissions</a></li>
+                <li><a href="facilities.html" class="active">Facilities</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="student-portal.html" class="highlight-link">Student Portal</a></li>
+                <li><a href="faculty.html">Faculty</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Campus & Facilities</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / Facilities
+            </div>
+        </div>
+    </header>
+
+    <!-- Intro text -->
+    <div class="container">
+        <p class="facility-intro">
+            At Jai Janta Education Society, we believe that a conducive environment is just as important as classroom learning. Our Kinhiraja campus is equipped with modern infrastructure, safe residential facilities, and specialized laboratories to ensure our students have everything they need to succeed academically and personally.
+        </p>
+    </div>
+
+    <!-- Ashram & Residential Highlight -->
+    <section style="padding-top: 0;">
+        <div class="container">
+            <div class="ashram-highlight">
+                <div class="ashram-img"></div>
+                <div class="ashram-content">
+                    <h3>Residential Ashram School & Hostels</h3>
+                    <p>Our Ashram schools provide a safe, secure, and nurturing home away from home for students from rural and marginalized backgrounds. We focus on holistic development, ensuring students receive proper nutrition, daily routine discipline, and an environment conducive to continuous learning.</p>
+                    <ul class="feature-list">
+                        <li><i class="fa fa-bed"></i> Separate, well-ventilated dormitories for boys and girls.</li>
+                        <li><i class="fa fa-utensils"></i> Hygienic mess providing nutritious, balanced daily meals.</li>
+                        <li><i class="fa fa-shield-alt"></i> 24/7 campus security and resident wardens.</li>
+                        <li><i class="fa fa-medkit"></i> Emergency medical assistance and regular health checkups.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Academic & Sports Facilities -->
+    <section class="bg-light">
+        <div class="container">
+            <h2 class="section-title">Academic & Campus Amenities</h2>
+            <p class="section-subtitle">Infrastructure designed to support modern education and physical well-being.</p>
+            
+            <div class="facilities-grid">
+                
+                <!-- Facility 1 -->
+                <div class="facility-card">
+                    <div class="facility-icon-wrap">
+                        <i class="fa fa-flask"></i>
+                    </div>
+                    <div class="facility-info">
+                        <h4>Advanced Science Labs</h4>
+                        <p>Fully equipped Physics, Chemistry, and Biology laboratories for our Higher Secondary Science students, ensuring hands-on practical learning in alignment with board guidelines.</p>
+                    </div>
+                </div>
+
+                <!-- Facility 2 -->
+                <div class="facility-card">
+                    <div class="facility-icon-wrap">
+                        <i class="fa fa-desktop"></i>
+                    </div>
+                    <div class="facility-info">
+                        <h4>Computer & IT Center</h4>
+                        <p>Modern computer labs with high-speed internet access. Crucial for our MCVC vocational students and for teaching essential digital literacy across all departments.</p>
+                    </div>
+                </div>
+
+                <!-- Facility 3 -->
+                <div class="facility-card">
+                    <div class="facility-icon-wrap">
+                        <i class="fa fa-book-reader"></i>
+                    </div>
+                    <div class="facility-info">
+                        <h4>Central Library</h4>
+                        <p>A vast repository of academic books, journals, and reference materials. Features a dedicated quiet reading room and resources for students preparing for competitive exams.</p>
+                    </div>
+                </div>
+
+                <!-- Facility 4 -->
+                <div class="facility-card">
+                    <div class="facility-icon-wrap">
+                        <i class="fa fa-volleyball-ball"></i>
+                    </div>
+                    <div class="facility-info">
+                        <h4>Sports & Playground</h4>
+                        <p>A sprawling playground featuring courts for Volleyball, grounds for Cricket, and facilities for athletics to promote physical fitness, teamwork, and competitive sportsmanship.</p>
+                    </div>
+                </div>
+
+                <!-- Facility 5 -->
+                <div class="facility-card">
+                    <div class="facility-icon-wrap">
+                        <i class="fa fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="facility-info">
+                        <h4>Smart Classrooms</h4>
+                        <p>Select classrooms equipped with digital smart boards and audio-visual aids to make complex subjects easier to understand through interactive learning.</p>
+                    </div>
+                </div>
+
+                <!-- Facility 6 -->
+                <div class="facility-card">
+                    <div class="facility-icon-wrap">
+                        <i class="fa fa-cogs"></i>
+                    </div>
+                    <div class="facility-info">
+                        <h4>Vocational Workshops</h4>
+                        <p>Specialized workshops equipped with modern tools and machinery for MCVC students studying Electrical Technology, Auto Engineering, and Electronics.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container grid-container grid-4">
+            
+            <div class="footer-col">
+                <h3>About Society</h3>
+                <p>Jai Janta Education Society, Fulumari Ta. Manora Dist. Washim is dedicated to providing quality education, skill development, and strong moral values to rural students in Kinhiraja, Washim.</p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="facilities.html">Hostel & Facilities</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Portals</h3>
+                <ul>
+                    <li><a href="student-portal.html">Student Portal (Leave & Docs)</a></li>
+                    <li><a href="faculty.html">Faculty Directory</a></li>
+                    <li><a href="verify-id.html">Verify Digital ID</a></li>
+                    <li><a href="admin-login.html">Admin Login</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Get In Touch</h3>
+                <ul class="contact-details">
+                    <li><i class="fa fa-map-marker-alt"></i> Kinhiraja, Ta. Malegaon, Dist. Washim</li>
+                    <li><i class="fa fa-phone"></i> +91 8149797952</li>
+                    <li><i class="fa fa-envelope"></i> admin@naikcollege.com</li>
+                </ul>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <p>&copy; 2026 Jai Janta Education Society, Kinhiraja. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Script -->
+    <script src="js/app.js"></script>
+</body>
+</html>
