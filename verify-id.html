@@ -30,7 +30,7 @@
 
         /* Search Section */
         .verification-container {
-            max-width: 600px;
+            max-width: 700px; /* Slightly wider to fit all data beautifully */
             margin: 0 auto 60px auto;
             text-align: center;
         }
@@ -194,11 +194,13 @@
         
         .id-body {
             padding: 30px;
-            display: grid;
-            grid-template-columns: 140px 1fr;
+            display: flex; /* Changed to flex for better responsive handling */
             gap: 30px;
-            align-items: center;
+            align-items: flex-start;
             background: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath fill="%23f4f7fb" fill-opacity="0.4" d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z"%3E%3C/path%3E%3C/svg%3E');
+        }
+        .id-photo-container {
+            flex: 0 0 140px;
         }
         .id-photo {
             width: 140px; height: 160px;
@@ -208,6 +210,9 @@
             background: #fff;
             object-fit: cover;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .id-details {
+            flex-grow: 1;
         }
         .id-details h2 {
             color: #1a202c;
@@ -228,18 +233,25 @@
             text-transform: uppercase;
         }
         .detail-row {
-            display: grid;
-            grid-template-columns: 120px 1fr;
+            display: flex;
+            align-items: flex-start; /* Allows address to wrap naturally */
             margin-bottom: 8px;
             font-size: 14px;
+            line-height: 1.4;
         }
         .detail-label {
             color: #718096;
             font-weight: 600;
+            flex: 0 0 130px; /* Fixed width for labels to align correctly */
         }
         .detail-value {
             color: #2d3748;
             font-weight: 500;
+            flex-grow: 1;
+        }
+        .highlight-value {
+            color: #0b4a8e; 
+            font-weight: 700;
         }
         
         .id-footer {
@@ -256,10 +268,9 @@
         @media (max-width: 600px) {
             .input-group { flex-direction: column; }
             .btn-verify { padding: 15px; justify-content: center; }
-            .id-body { grid-template-columns: 1fr; text-align: center; }
-            .id-photo { margin: 0 auto; }
-            .detail-row { grid-template-columns: 1fr; margin-bottom: 12px; }
-            .detail-label { margin-bottom: 2px; }
+            .id-body { flex-direction: column; align-items: center; text-align: center; }
+            .detail-row { flex-direction: column; align-items: center; margin-bottom: 12px; }
+            .detail-label { flex: none; margin-bottom: 2px; }
             .id-header-logo span { display: none; } /* Hide text on small screens */
         }
     </style>
@@ -319,7 +330,7 @@
                 <p style="color: #666; font-size: 14px;">Scan the QR code on the physical ID card, or manually enter the Identification Number below to verify against our official database.</p>
                 
                 <form id="verifyForm" class="input-group" onsubmit="event.preventDefault(); triggerVerification();">
-                    <input type="text" id="idInput" class="id-input" placeholder="e.g. FAC-001 or STU-2026-45" required autocomplete="off">
+                    <input type="text" id="idInput" class="id-input" placeholder="e.g. TP15700067 or 22575751785" required autocomplete="off">
                     <button type="submit" class="btn-verify">
                         <i class="fa fa-search"></i> Verify
                     </button>
@@ -393,16 +404,16 @@
 
     <!-- Verification Script -->
     <script>
+        // REPLACE WITH YOUR NEW SCRIPT URL AFTER DEPLOYING CODE.GS
         const APP_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwu4cq8rukvOwfqYWml7JKImilTW8q3MmNKBu076BWmUnUl4K1loWnvRmcfmppyvxqF/exec";
 
-        // Check if a QR code linked here directly with a parameter (e.g. ?id=XYZ)
         document.addEventListener("DOMContentLoaded", () => {
             const urlParams = new URLSearchParams(window.location.search);
             const scannedId = urlParams.get('id');
             
             if (scannedId) {
                 document.getElementById('idInput').value = scannedId;
-                triggerVerification(); // Auto-trigger if scanned
+                triggerVerification();
             }
         });
 
@@ -411,7 +422,12 @@
             if (!url || url.trim() === '') return 'https://via.placeholder.com/150x180?text=No+Photo';
             let id = null;
             const match = url.match(/\/d\/(.+?)\//); 
-            if (match && match[1]) id = match[1];
+            if (match && match[1]) {
+                id = match[1];
+            } else {
+                const idMatch = url.match(/[?&]id=([^&]+)/);
+                if (idMatch && idMatch[1]) id = idMatch[1];
+            }
             if (id) return `https://drive.google.com/thumbnail?id=${id}&sz=w400`;
             return url;
         }
@@ -425,13 +441,11 @@
 
             if (!searchId) return;
 
-            // UI Adjustments
             form.style.display = 'none';
             resultArea.style.display = 'none';
             loader.style.display = 'flex';
 
             try {
-                // Fetch specific ID data
                 const response = await fetch(`${APP_SCRIPT_URL}?action=verify&id=${encodeURIComponent(searchId)}`);
                 const result = await response.json();
 
@@ -442,7 +456,71 @@
                 if (result.status === "success") {
                     const d = result.data;
                     const imgUrl = getDirectImageUrl(d.image);
-                    const subTitle = result.type === "Faculty" ? d.designation : d.course;
+                    const isStudent = result.type === "Student";
+                    
+                    // Construct dynamic details based on Student vs Faculty
+                    let detailsHTML = `
+                        <div class="detail-row">
+                            <span class="detail-label">ID Number:</span>
+                            <span class="detail-value highlight-value">${d.id || 'N/A'}</span>
+                        </div>
+                    `;
+
+                    if (isStudent) {
+                        detailsHTML += `
+                            <div class="detail-row">
+                                <span class="detail-label">Class:</span>
+                                <span class="detail-value highlight-value">${d.course || 'N/A'}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Date of Birth:</span>
+                                <span class="detail-value">${d.dob || 'N/A'}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Mobile No:</span>
+                                <span class="detail-value">${d.mobile || 'N/A'}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Parents Mobile:</span>
+                                <span class="detail-value">${d.parentsMobile || 'N/A'}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Address:</span>
+                                <span class="detail-value">${d.address || 'N/A'}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Session:</span>
+                                <span class="detail-value">${d.session || 'N/A'}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Institute Name:</span>
+                                <span class="detail-value">${d.institute || 'N/A'}</span>
+                            </div>
+                        `;
+                    } else {
+                        detailsHTML += `
+                            <div class="detail-row">
+                                <span class="detail-label">Designation:</span>
+                                <span class="detail-value highlight-value">${d.designation || 'N/A'}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Date of Birth:</span>
+                                <span class="detail-value">${d.dob || 'N/A'}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Mobile No:</span>
+                                <span class="detail-value">${d.mobile || 'N/A'}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Address:</span>
+                                <span class="detail-value">${d.address || 'N/A'}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Institute Name:</span>
+                                <span class="detail-value">${d.institute || 'N/A'}</span>
+                            </div>
+                        `;
+                    }
 
                     // Render Verified ID Card
                     resultArea.innerHTML = `
@@ -456,29 +534,16 @@
                             </div>
                             
                             <div class="id-body">
-                                <img src="${imgUrl}" class="id-photo" alt="Profile Photo" onerror="this.src='https://via.placeholder.com/150x180?text=Error'">
+                                <div class="id-photo-container">
+                                    <img src="${imgUrl}" class="id-photo" alt="Profile Photo" onerror="this.src='https://via.placeholder.com/150x180?text=No+Photo'">
+                                </div>
                                 
                                 <div class="id-details">
                                     <div class="id-role-badge">${result.type} Profile</div>
-                                    <h2>${d.name}</h2>
+                                    <h2>${d.name || 'Unknown Name'}</h2>
                                     
                                     <div style="margin-top: 15px;">
-                                        <div class="detail-row">
-                                            <span class="detail-label">ID Number:</span>
-                                            <span class="detail-value" style="color: #0b4a8e; font-weight: 700;">${d.id}</span>
-                                        </div>
-                                        <div class="detail-row">
-                                            <span class="detail-label">${result.type === 'Faculty' ? 'Designation:' : 'Course/Class:'}</span>
-                                            <span class="detail-value">${subTitle}</span>
-                                        </div>
-                                        <div class="detail-row">
-                                            <span class="detail-label">Department:</span>
-                                            <span class="detail-value">${d.department}</span>
-                                        </div>
-                                        <div class="detail-row">
-                                            <span class="detail-label">Blood Group:</span>
-                                            <span class="detail-value" style="color: #e53e3e; font-weight: 700;">${d.bloodGroup}</span>
-                                        </div>
+                                        ${detailsHTML}
                                     </div>
                                 </div>
                             </div>
